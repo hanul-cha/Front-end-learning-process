@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .active{
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+
+            header{
+                width: 100%;
+                height: 100vh;
+                background: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+
+            header>h1{
+                color: #fff;
+                font-size: 100px;
+            }
+
+            #firstCon{
+                width: 100%;
+                height: 100vh;
+                background: #434343;
+            }
+
+            #firstCon>div{
+                width:300px;
+                height: 500px;
+                background: #fff;
+                position: relative;
+                top:100px;
+                left: 0;
+                opacity: 0;
+            }
+
+            #secondCon{
+                width: 100%;
+                height: 100vh;
+                background: red;
+            }
+
+            #thurdCon{
+                width: 100%;
+                height: 100vh;
+                background: #b8b8b8;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="header">
+            <h1>HEADER</h1>
+        </header>
+        <section id="firstCon">
+            <div id="whithSection"></div>
+        </section>
+        <section id="secondCon">
+
+        </section>
+        <section id="thurdCon">
+
+        </section>
+        <script>
+            //제이쿼리를 사용하지 않고 바닐라 자바스크립트로만 구현하는게 목표
+            let whithSection = document.getElementById('whithSection');
+            let header = document.getElementById('header');
+            let scrollEvent = window.scrollY;
+            let changeValue = 200;
+            
+           
+            
+            
+            function scrollEvt() {
+                window.addEventListener('scroll', function(){
+                    let hHight = header.clientHeight - 200;
+                    let scrollValue = window.scrollY;
+                    /* let secondCon = document.getElementById('secondCon');
+                    let secondHight = secondCon.clientHeight; */
+                    if(hHight<=scrollValue){
+                        whithSection.style.left = scrollValue - hHight + 'px';
+                        whithSection.style.opacity = (scrollValue - hHight)/100; //스크롤값1당 0.01
+                        if((scrollValue - hHight)>=200){ //입력한 값에서 애니메이션이 멈춤
+                            whithSection.style.left = 200 +'px';
+                            /* let firstCon = document.getElementById('firstCon');
+                            firstCon.classList.add('active'); */
+                        }
+                        /* if((scrollValue - hHight) >= secondHight){
+                            firstCon.classList.remove('active');
+                            secondCon.style.dispaly = 'none';
+                        } */
+                    }
+                    console.log(scrollValue);
+                    console.log(hHight);
+                    console.log(firstCon);
+                });
+            }
+
+            scrollEvt();
+
+            window.addEventListener("resize",function(){
+                hHight = header.clientHeight;
+                scrollEvt();
+                console.log(hHight); 
+            }); 
+            
+             
+            /*
+            현재 문제점 : 
+            1. 리사이즈 했을때 헤더의 높이값을 못받아서 반응형에선 쓸수 없는 코드임
+            (위에보면 함수안에서 실시간으로 받는건 성공했는데 함수안에서만 받고 전역스코프에선 사용할수 없다) 
+            
+            2. 원하는 위치에서 애니메이션이 멈추게는 구현했지만 투명도를 조절하는식을 만들어야 될거같음
+            (스크롤을 빠르게 했을땐 받고있는 스크롤값이 갑자기 커져서 투명도가 0이 안되는 이슈가 있음) 
+            */
+
+            /* 
+            구현하고 싶은점 :
+            스크롤해서 원하는 위치에 컨텐츠가 자리잡으면
+            스크롤을 해도(일정스크롤까지) 화면이 고정되는 기능이 있으면 좋겠음
+            참고 url:http://www.cheeze.co.kr/ -출처 : 치즈님 포트폴리오-
+            */
+
+            
+
+           
+
+            
+            
+            
+
+
+
+            
+                
+            
+            
+
+        </script>
+    </body>
+</html>
