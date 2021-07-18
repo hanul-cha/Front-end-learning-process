@@ -2,47 +2,68 @@
 let contentA = document.querySelectorAll('#nameConInner>li>p');
 let aside = document.getElementById('aside');
 let contentliImg = document.querySelectorAll('#nameConInner>li>img');
-let localArr = [];
 
+let localArr = [];// 비어있는 객체선언
+
+//로컬에 할당
 function setSrc() {
     localStorage.setItem("src", JSON.stringify(localArr));//로컬값을 각각의스트링으로 만들어줄거임(배열처럼)
 }
 
+//하트색을 채우는 구문
 function addHeart(localStr,tagP) {
     let newImg = document.createElement("img");
-    newImg.id = localStr.id;
+    
     newImg.src = localStr.src;
+    newImg.id = localStr.id;
     aside.appendChild(newImg);
 
-    console.log(tagP);
     tagP.innerHTML = "🧡";
     for(let j=0;j<contentliImg.length;j++){
         if(localStr.src == contentliImg[j].src){
             contentliImg[j].parentElement.querySelector('p').innerHTML = "🧡";
+            contentliImg[j].parentElement.id = localStr.id;
         }
     }
     
 }
 
-
-function clickHeart() {
-    let li = this.parentElement.firstElementChild.src;
-    
-    const localStr = {
-        src: li,
-        id: Date.now(),
+function deleteHeart(deletTagP) {
+    let newAsideImg = document.querySelectorAll('#aside>img');
+    for(let k=0;k<newAsideImg.length;k++){
+        if(newAsideImg[k].id == deletTagP.parentElement.id){
+            newAsideImg[k].remove();
+        }
     }
-    localArr.push(localStr);
+    const deletLi = deletTagP.parentElement;
+    localArr = localArr.filter(lA => lA.id !== parseInt(deletLi.id));
+    setSrc();
+    
+}
+
+
+
+//클릭 이벤트 핸들러
+function clickHeart() {
+    
     if(this.innerHTML == "🤍"){
-        addHeart(localStr,this);
+        
         
         /* this.innerHTML = "🧡"; */
+        let li = this.parentElement.firstElementChild.src;
+    
+        const localStr = {
+            src: li,
+            id: Date.now(),
+        }
+        localArr.push(localStr);
+        addHeart(localStr,this);
     }else{
         this.innerHTML = "🤍";
-
+        deleteHeart(this);
     }
     setSrc();
-    console.log(this);
+    
 }
 
 //클릭이벤트
