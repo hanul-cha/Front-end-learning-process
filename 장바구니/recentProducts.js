@@ -25,9 +25,10 @@ function addHeart(localStr,tagP) {
             contentliImg[j].parentElement.id = localStr.id;
         }
     }
-    
 }
 
+
+//로컬, aside삭제
 function deleteHeart(deletTagP) {
     let newAsideImg = document.querySelectorAll('#aside>img');
     for(let k=0;k<newAsideImg.length;k++){
@@ -38,24 +39,19 @@ function deleteHeart(deletTagP) {
     const deletLi = deletTagP.parentElement;
     localArr = localArr.filter(lA => lA.id !== parseInt(deletLi.id));
     setSrc();
-    
 }
-
 
 
 //클릭 이벤트 핸들러
 function clickHeart() {
-    
     if(this.innerHTML == "🤍"){
-        
-        
-        /* this.innerHTML = "🧡"; */
         let li = this.parentElement.firstElementChild.src;
     
         const localStr = {
             src: li,
             id: Date.now(),
         }
+
         localArr.push(localStr);
         addHeart(localStr,this);
     }else{
@@ -63,7 +59,6 @@ function clickHeart() {
         deleteHeart(this);
     }
     setSrc();
-    
 }
 
 //클릭이벤트
@@ -71,6 +66,8 @@ for(let i=0;i<contentA.length;i++){
     contentA[i].addEventListener('click',clickHeart);
 }
 
+
+//첫동작구문
 const savedsrc = localStorage.getItem("src");
 if(savedsrc){//로컬스토리지가 있다면
     const parsedSrc = JSON.parse(savedsrc);//배열로 만들어 줄것임
