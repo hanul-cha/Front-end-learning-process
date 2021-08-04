@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ccomputed property</title>
+</head>
+<body>
+    <script>
+        let a = "age";
+        const user = {
+            name : "Mike",
+            [a] : 30 // age : 30
+        }
+        //대괄호를 사용해서 a라는 문자열이 아니라 a에 할당된 값이 들어가는데
+        //이를 computed property(계산된 프로퍼티) 라고 한다
+
+        const user = {
+            [1 + 5] : 5,
+            ["안녕" + "하세요"] : "hello"
+        }
+        //{5: 5, 안녕하세요: hello} 와같은 결과가 나옴
+    </script>
+</body>
+</html>

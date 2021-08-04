@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>생성자 함수</title>
+</head>
+<body>
+    <script>
+        //객체 리터럴
+        let user = {
+            name : "Mike",
+            age : 30,
+        }
+
+         //생성자함수
+         function User(name, age){//첫글자는 대문자로
+            this.name = name;
+            this.age = age;
+         }
+         
+
+         let user1 = new User('Mike', 30);
+         let user2 = new User('Jane', 22);
+         let user3 = new User('Tom', 17);
+    </script>
+</body>
+</html>

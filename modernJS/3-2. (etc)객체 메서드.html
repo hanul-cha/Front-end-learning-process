@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>객체 메서드</title>
+</head>
+<body>
+    <script>
+        //객체에서 사용가능한 메서드 몇가지
+
+        //Object.keys(): 키 배열 반환
+        //Object.values(): 값 배열 반환
+        //Object.entries(): 키/값 배열 반환
+        //Object.fromEntries(): 키/값 배열을 객체로 반환
+
+        const user = {
+            name: 'mike',
+            age: 30,
+            gender: 'male',
+        }
+        Object.keys(user); //["name", "age", "gender"]
+        Object.values(user); //["Mike", "30", "male"]
+        Object.entries(user); 
+        /* 
+        [
+            ["name","Mike"]
+            ["age",30]
+            ["gender","male"]
+        ]
+        */
+        const arr = 
+        [
+            ["name","Mike"]
+            ["age",30]
+            ["gender","male"]
+        ];
+        Object.fromEntries(arr);
+        /* 
+            {
+                name: 'mike',
+                age: 30,
+                gender: 'male',
+            }
+        */
+    </script>
+</body>
+</html>

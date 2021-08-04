@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>변수</title>
+</head>
+<body>
+    <script>
+        //변수는 es6로 넘어오면서 let과 const가 추가됨 var는 이제 잘 안쓴다
+
+        var name = "mike";
+        console.log(name);
+        var name = "jane";
+        console.log(name);
+        // var는 보다싶이 에러를 발생시키지않음
+
+        /* let name = "can";
+        console.log(name); */
+        // let은 한번 선언된 변수를 다시선언하는걸 금지한다.
+        
+
+
+        console.log(title); //undefind (호이스팅이 일어나 할당이 안된 변수가 선언되 있기때문에 작동한다)
+        var title = "제목"; //할당은 이부분에서 된다
+
+
+        /* 
+            let과 const가 호이스팅이 안되는것은 아니다 많이 오해하고 있는 부분인데
+            호이스팅 : 스코프 내부 어디서든 변수선언은 최상위에 선언된 것 처럼 행동
+            temporal dead zone 때문에 그렇다
+        */
+
+        //console.log(num) temporal dead zone 
+        const num = "하나" //함수 선언 및 할당
+        console.log(num) //사용가능
+        // let과 const는 tdz에 영향을 받는다. 
+
+
+
+        let age = 30;
+
+        function showAge() {
+            console.log(age); 
+            
+            let age = 20; //❌ 호이스팅이 일어나지 않았다면 정상적으로 30이 찍혀야함
+        }
+
+        showAge(); // errer
+
+
+        /* 
+            변수의 생성과정
+            - var = 1. 선언 및 초기화 단계 (할당전에 호출하면 에러가 나오지 않고 undefind가 나옴)
+                    2. 할당 단계
+            - let = 1. 선언 단계 (호이스팅 되면서 선언은 되지만 초기화가 이루어지지 않기때문에 에러를 송출)
+                    2. 초기화 단계
+                    3. 할당 단계
+            - var = 1. 선언 + 초기화 + 할당 (값을 바꿀수 없는 상수기때문)
+            ex)
+            let name;
+            name = "mike";
+
+            var age;
+            age = 30;
+
+            const gender;
+            gender = "male"; //오류가 발생한다
+        */
+    </script>
+</body>
+</html>
