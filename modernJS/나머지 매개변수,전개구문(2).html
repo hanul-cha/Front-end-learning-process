@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>나머지 매개변수, 전개구문(2)</title>
+
+</head>
+<body>
+    <script>
+        //객체 합병하기
+
+        let user = { name: 'Mike' };
+        let info = { age: 30 };
+        let fe = ['JS', 'React'];
+        let lang = ['Korea', 'English'];
+
+        /* user = Object.assign({}, user, info, {
+            skill: [],
+        });
+
+        fe.forEach((item) => {
+            user.skill.push(item);
+        });
+        lang.forEach((item) => {
+            user.skill.push(item);
+        }); */ 
+        //이방법은 너무 복잡함 이것도 전개구문을 사용해주면 아주 간단하게 표현가능함
+
+        user = {
+            ...user,
+            ...info,
+            skill : [...fe, ...lang],
+        }
+        //위에 일일이 forEach해주고 assign 해준것보다 짧고 가독성 높은 코드가 나온다
+
+        console.log(user);
+    </script>
+</body>
+</html>
