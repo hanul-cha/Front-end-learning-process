@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>closure</title>
+</head>
+<body>
+    <script>
+        function makeAdder(x){
+            return function(y){
+                return x + y;
+            }
+        }
+
+        const add3 = makeAdder(3);
+        console.log(add3(2)); // 5 
+        /* 
+            최초 실행시 makeAdder와 add3는 전역 렉시컬 환경에 할당됨 add3는 초기화가 안되서 아직 사용 할 수 없음
+            15번 시트가 실행될때 makeAdder렉시컬 환경(지역)렉시컬이 생성 전달받은x 의 값이 들어감
+            16번 시트가 실행되면 첫번째 리턴이 실행되고 새로운 익명함수 렉시컬 환경이 생겨남 그리고 전달받은 y값이 들어감
+
+            이제 할당된 값들을 찾는데 익명함수 렉시컬에서 없는부분을 makeAdder렉시컬을 참조해서 찾고 없으면 또 전역 렉시컬을 참조해서 찾음
+        */
+        // 정리하자면 
+        /* 
+            function makeAdder(x){
+                return function(y){ //y 를 가지고 있고 상위함수인 makeAdder의x에도 접근이 가능
+                    return x + y;
+                }
+            }
+
+            const add3 = makeAdder(3);
+            console.log(add3(2)); // 5  add3함수가 생성된 이후에도 상위함수인 makeAdder의 x에 접근가능
+            이런것을 클로저라고 부름
+        */
+
+        //클로저 : 함수와 렉시컬 환경의 조합
+        //함수가 생성될 당시의 외부 변수를 기억
+        //생성 이후에도 계속 접근 가능
+
+        const add10 = makeAdder(10); //makeAdder(10)이 호출되도
+        console.log(add10(5)); //15
+        console.log(add3(1)); //4    //이부분에서는 영향이 없다 서로 다른 환경을 가지고 있다
+
+
+
+
+        //멋진 ex
+        function makeCounter() {
+            let num = 0; //은낙화(closure화)
+
+            return function () {
+                return num++;
+            };
+        }
+
+        let counter = makeCounter();
+
+        console.log(counter()); //0
+        console.log(counter()); //1
+        console.log(counter()); //2
+        // 호출할때마다 counter함수에서 상위위렉시컬에 num을 참조 하기때문에 1씩 증가한다
+        // 이제 50번 시트에 할당된 숫자는 바꿀수 없다 즉 은닉화가 된것이다
+    </script>
+</body>
+</html>
