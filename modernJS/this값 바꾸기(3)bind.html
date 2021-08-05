@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+    <script>
+        //바인드를 사용하면 this값을 영구히 바꿀수 있음
+
+        const mike = {
+            name: 'Mike',
+        };
+
+        function update(birthYeer, occupation) {
+            this.birthYeer = birthYeer;
+            this.occupation = occupation;
+        }
+        //bind를 사용하면 update함수를 이리저리 옮기면서 호출할때 this값은 항상 mike가 되게 할수 있음
+        
+        const updateMike = update.bind(mike);
+
+        updateMike(1980, "police");
+        console.log(mike);
+    
+        //실사용 예제
+        const user = {
+            name: 'Mike',
+            showName: function() {
+                console.log(`hello, ${this.name}`);
+            },
+        }
+
+        user.showName(); // hello, Mike
+
+        let fn = user.showName; 
+
+        fn(); // hello,  할당할때 this를 잃어버림
+
+        fn.call(user);
+        fn.apply(user);
+
+        let bindFn = fn.bind(user);
+
+        bindFn();
+
+
+    </script>
+</body>
+</html>

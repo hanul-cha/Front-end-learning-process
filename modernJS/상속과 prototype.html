@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상속과 프로토타입</title>
+</head>
+<body>
+    <script>
+        const car = {
+            wheel: 4,
+            drive() {
+                console.log("drive..");
+            },
+        }; // 중복되는 부분을 빼줌
+
+        const bmw = {
+            color: "red",
+            navigation: 1,
+        };
+
+        bmw.__proto__ = car;
+        
+        const x5 = {
+            color: "white",
+            name: "x5",
+        }
+
+        x5.__proto__ = bmw;
+        
+        
+        console.log(x5.color); //white x5에 이미 color가 있기때문에 proto까지 가지않음
+        console.log(x5.navigation);//1 x5에 없기 때문에 프로토타입에 접근함
+        //이런것을 Prototype Chain이라고 부름
+
+        for(p in x5){
+            console.log(p);// 프로토타입에 접근할수 있는 모든것들을 보여준다
+        }
+
+        console.log(Object.keys(x5));
+        console.log(Object.values(x5));
+        //키와 값과 관련된 객체 내장 메서드는 상속된 프로퍼티는 안가져옴
+
+    </script>
+</body>
+</html>

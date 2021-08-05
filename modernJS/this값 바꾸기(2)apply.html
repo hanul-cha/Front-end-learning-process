@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+</head>
+<body>
+    <script>
+        /* 
+            apply는 함수 매개변수를 처리하는 방법을 제외하면 call과 완전히 같음
+            call은 일반적인 함수와 마찬가지로 매게변수를 직접받지만 
+            apply는 매개변수를 배열로 받음
+        */
+        const mike = {
+            name: 'Mike',
+        };
+        const tom = {
+            name: 'Tom',
+        };
+
+        function update(birthYeer, occupation) {
+            this.birthYeer = birthYeer;
+            this.occupation = occupation;
+        }
+
+        update.apply(mike, [1999, "singer"]);
+        console.log(mike);
+
+
+
+
+        const nums = [3, 10, 1, 6, 4];
+        /* const minNum = Math.min(nums);
+        const maxNum = Math.max(nums); NaN이 나옴 */
+        
+        /* const minNum = Math.min(...nums);
+        const maxNum = Math.max(...nums); 이렇게 하면 잘나옴 */
+
+        const minNum = Math.min.apply(null, nums);
+        const maxNum = Math.max.apply(null, nums);
+        //애초에 apply가 배열로 받기 전개구문을 써서 풀어줄 필요없기 때문에 가능함
+
+        console.log(minNum);
+        console.log(maxNum);
+        
+    </script>
+</body>
+</html>

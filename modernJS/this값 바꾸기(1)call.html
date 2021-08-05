@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call</title>
+</head>
+<body>
+    <script>
+        const mike = {
+            name: 'Mike',
+        };
+        const tom = {
+            name: 'Tom',
+        };
+
+        function showName() {
+            console.log(this.name); 
+        }
+
+        showName(); // 여기서 this는 윈도우객체임
+        showName.call(mike); // 여기서 this는 변수mike
+
+        function update(birthYeer, occupation) {
+            this.birthYeer = birthYeer;
+            this.occupation = occupation;
+        }
+
+        update.call(mike, 1999, "singer");
+        console.log(mike);
+
+        // call(this,parameters) = 첫번째로 받는 인자는 this로 쓰일 인자고 두번째부턴 함수에서 사용할 매개변수임
+    </script>
+</body>
+</html>
