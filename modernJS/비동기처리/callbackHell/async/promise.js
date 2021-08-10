@@ -26,7 +26,47 @@ const promise = new Promise((resolve, reject) => {//  (resolve, reject): executo
 promise
     .then((value) => { //값이 정상적으로 잘 수행이 된다면, 20번시트의 reslve의 값이 여기 할당
         console.log(value);
-    })
+    }) // 체이닝 - then을 호출하면 똑같은 promise를 리턴해서 catch를 사용가능
     .catch(error => {
         console.log(error);
+    })
+    .finally(() => {
+        console.log('finally');
+    })
+
+//promis chaining
+const fetchNumber = new Promise((resolve, reject) => {
+    setTimeout(() => resolve(1),1000);
+});
+
+fetchNumber
+    .then(num => num * 2)
+    .then(num => num * 3)
+    .then(num => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => resolve(num - 1),1000);
+        });
+    })
+    .then(num => console.log(num));
+
+//error hendling
+
+const getHen = () =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => resolve(`🐓`),1000);
     });
+const getEgg = hen =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => resolve(`${hen} => 🥚`),1000);
+    });
+const cook = egg =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => resolve(`${egg} => 🐣`),1000);
+    });
+
+/* getHen()
+    .then(hen => getEgg(hen))
+    .then(egg => cook(egg))
+    .then(meal => console.log(meal)); */
+getHen().then(getEgg).then(cook).then(console.log);
+//인자를 하나만 받는경우 이렇게 줄여 쓸수 있다
