@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class의 상속</title>
+</head>
+<body>
+    <script>
+       //생성자 함수의 상속은 prototype을 사용했음
+       //class의경우 extends키워드를 사용
+
+       class Car {
+           constructor(color) {
+               this.color =  color;
+               this.wheels =  4;
+           }
+           drive() {
+               console.log("drive..");
+           }
+           stop() {
+               console.log("STOP");
+           }
+       }
+
+       class Bmw extends Car {
+           constructor(stop) {
+               super(stop); //constructor는 항상 부모요소를 참조해 줘야하고 인자도 넘겨줘야 사용할수 있다
+               this.navigation = 1;
+               //사실 이부분은 작성하지 않아도 자바스크립트에서 자동적으로 실행이 되지만 인자를 넘겨줘야할 경우엔 직접작성해야한다
+               /* 
+                생략되는 문법은 이러함
+                constructor(...args) {
+                    super(...args);
+                }
+               */
+           }
+           park() {
+              console.log("PARK"); 
+           }
+           stop() {
+               super.stop(); // super를 사용하면 부모요소의 메서드를 우선적으로 실행함(오버라이딩)
+               console.log("OFF");
+           }
+       }
+
+       const z4 = new Bmw("blue");
+
+       console.log(z4);
+       z4.stop();//메서드 이름이 같으면 proto개념과 같게 먼저 찾은 bmw에 있는 메서드가 실행됨
+
+
+    </script>
+</body>
+</html>
