@@ -18,9 +18,17 @@ const parsing = async (keyword) => {
     let info = [];
     $userInfo.each((idx, node) => {
         const level = $(node).find(".level-info2__expedition span").text();
-        console.log(level);
+        
+        info.push(
+            {
+                name: keyword,
+                level: $(node).find(".level-info2__expedition span").text(),
+                style: $(node).find(".game-info__title span").text(),
+                
+            }
+        )  
     });
-    
+    console.log(info);
 }
 
 parsing('안산디와이');
