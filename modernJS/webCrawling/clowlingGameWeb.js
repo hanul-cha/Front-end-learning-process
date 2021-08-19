@@ -24,11 +24,11 @@ const parsing = async (keyword) => {
                 name: keyword,
                 level: $(node).find(".level-info2__expedition span").text(),
                 style: $(node).find(".game-info__title span").text(),
-                
+
             }
         )  
     });
     console.log(info);
 }
 
-parsing('안산디와이');
+parsing('희광박');
