@@ -11,5 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "redux": "^4.1.1"
-  }
+  },
+  "type": "module"
 }
