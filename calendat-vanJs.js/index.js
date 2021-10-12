@@ -36,6 +36,14 @@ for (let i = 1; i<7 - TLDay; i++) {
     nextDates.push(i);
 }
 
+const dates = prevDates.concat(thisDates, nextDates);
+
+dates.forEach((date, i) => {
+    dates[i] = `<div class="date">${date}</div>`;
+})
+
+document.querySelector('.dates').innerHTML = dates.join('');
+
 
 
 
