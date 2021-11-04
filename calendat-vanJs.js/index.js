@@ -25,7 +25,7 @@ const renderCalendar = () => {
     */
     const nextDates = [];/* 상황에 따라 들어갈수도 아닐수도 있어 비워놓음 */
 
-    if (PLDay !== 6) {
+    if (PLDay !== 6) { //토요일이라면 이번달이 1행1열 에서 시작해서 넣어준 조건문
         for (let i = 0; i<PLDay+1; i++) {
             prevDates.unshift(PLDate - i);
         }
