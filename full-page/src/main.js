@@ -1,0 +1,1 @@
+export let cake = 123
