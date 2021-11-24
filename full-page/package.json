@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "pageable": "^0.6.8",
     "webpack": "^5.64.2",
     "webpack-cli": "^4.9.1"
   },
