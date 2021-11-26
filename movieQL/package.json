@@ -11,16 +11,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "babel-cli": "^6.26.0",
     "babel-node": "0.0.1-security",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
-    "graphql-yoga": "^1.18.3"
+    "graphql-yoga": "^1.18.3",
+    "node-fetch": "^3.1.0"
   },
   "nodemonConfig": {
     "watch": [
-    "graphql"
+      "graphql"
     ],
     "ext": "js, ts, json, jsx, env, graphql"
-    }
+  }
 }
