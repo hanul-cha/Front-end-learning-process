@@ -5,5 +5,5 @@ const server = new GraphQLServer({
     typeDefs: "graphql/scheme.graphql",
     resolvers
 });
-
+ 
 server.start(() => console.log("Graphl Server Running"))
