@@ -1,6 +1,6 @@
 (function() {
 	"use strict";
-	/*[pan and well CSS scrolls]*/
+	/*[pan 과 well의 css스크롤]*/
 	var pnls = document.querySelectorAll('.panel').length,
 		scdir, hold = false;
 
@@ -33,7 +33,7 @@
 		}
 		console.log(scdir + ':' + slength + ':' + plength + ':' + (plength - plength / pnls));
 	}
-	/*[swipe detection on touchscreen devices]*/
+	/*[터치스크린 장치에서 스와이프 감지]*/
 	function _swipe(obj) {
 		var swdir,
 			sX,
@@ -41,13 +41,13 @@
 			dX,
 			dY,
 			threshold = 100,
-			/*[min distance traveled to be considered swipe]*/
+			/*[스와이프에서 간주되는 최소 이동거리]*/
 			slack = 50,
-			/*[max distance allowed at the same time in perpendicular direction]*/
+			/*[수직 방향에서 동시에 허용되는 최대 거리]*/
 			alT = 500,
-			/*[max time allowed to travel that distance]*/
-			elT, /*[elapsed time]*/
-			stT; /*[start time]*/
+			/*[그 거리를 이동할 수 있는 최대 시간]*/
+			elT, /*[경과 시간]*/
+			stT; /*[시작 시간]*/
 		obj.addEventListener('touchstart', function(e) {
 			var tchs = e.changedTouches[0];
 			swdir = 'none';
