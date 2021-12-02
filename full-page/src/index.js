@@ -8,6 +8,9 @@
 		var slength, plength, pan, step = 100,
 			vh = window.innerHeight / 100,
 			vmin = Math.min(window.innerHeight, window.innerWidth) / 100;
+			
+			/* console.log(this.offsetHeight);
+			console.log(window.innerHeight); */
 		if ((this !== undefined && this.id === 'well') || (obj !== undefined && obj.id === 'well')) {
 			pan = this || obj;
 			plength = parseInt(pan.offsetHeight / vh);
@@ -30,6 +33,10 @@
 			setTimeout(function() {
 				hold = false;
 			}, 1000);
+			
+		}
+		if(scdir === "up" && slength == '-300'){
+			console.log("yes");
 		}
 		console.log(scdir + ':' + slength + ':' + plength + ':' + (plength - plength / pnls));
 	}
